@@ -258,11 +258,19 @@ stQuizInfo playMathGame() {
 
 }
 
+void clearScreen() {
+    system("cls");
+    system("color 07");
+}
+
 void startMathGame() {
 
     char playAgain = 'y';
 
     do {
+
+        clearScreen();
+
         stQuizInfo quizInfo;
         quizInfo = playMathGame();
 
