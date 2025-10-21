@@ -184,6 +184,16 @@ void printQuestion(stQuizInfo quizInfo, int numberOfQuestion) {
 
 }
 
+void changeScreenColor(bool isPassed) {
+    if (isPassed) {
+        system("Color 2F");
+    }
+    else {
+        cout << "\a";
+        system("color 4F");
+    }
+}
+
 void checkUserAnswer(stQuizInfo& quizInfo, int numberOfQuestion) {
     quizInfo.questionList[numberOfQuestion].answer = readNumber();
 
@@ -198,12 +208,15 @@ void checkUserAnswer(stQuizInfo& quizInfo, int numberOfQuestion) {
         
         quizInfo.questionList[numberOfQuestion].isTure = false;
         quizInfo.numberOfWrongAnswer++;
-        cout << "\a";
         cout << "Wrong Answer :-(" << endl;
         cout << "The Right Answer Is : " << quizInfo.questionList[numberOfQuestion].result << endl;
 
     }
+
+    changeScreenColor(quizInfo.questionList[numberOfQuestion].isTure);
 }
+
+
 
 void answerAllQuestions(stQuizInfo& quizInfo) {
 
@@ -230,6 +243,7 @@ string getFinalResult(bool isPassed) {
 }
 
 void printQuizInfo(stQuizInfo quizInfo) {
+    changeScreenColor(quizInfo.isPassed);
     cout << "\n-------------------------------" << endl;
     cout << "Final Result Is " << getFinalResult(quizInfo.isPassed) << endl;
     cout << "-------------------------------" << endl;
@@ -260,7 +274,7 @@ stQuizInfo playMathGame() {
 
 void clearScreen() {
     system("cls");
-    system("color 07");
+    system("color 0F");
 }
 
 void startMathGame() {
