@@ -35,6 +35,14 @@ int readPositiveNumber(string msg) {
     do {
         cout << msg << " ";
         cin >> number;
+
+        while (cin.fail()) {
+			cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Invalid Number, Enter a valid one:" << " ";
+            cin >> number;
+        }
+
     } while (!isNumberInRange(number, 1, 10));
     return number;
 }
@@ -42,6 +50,12 @@ int readPositiveNumber(string msg) {
 int readNumber() {
     int number = 0;
     cin >> number;
+    while (cin.fail()) {
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "Invalid Number, Enter a valid one:" << " ";
+        cin >> number;
+    }
     return number;
 }
 
@@ -50,6 +64,14 @@ enLevel readQuizLevel() {
     do {
         cout << "Enter Questions Level [1] Easy, [2] Med, [3] Hard, [4] Mix ? ";
         cin >> level;
+
+        while (cin.fail()) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Invalid Number, Enter a valid one:" << " ";
+            cin >> level;
+        }
+
     } while (!isNumberInRange(level, 1, 4));
     return (enLevel)level;
 }
@@ -59,6 +81,14 @@ enOperation readQuizOpType() {
     do {
         cout << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div, [5] Mix ? ";
         cin >> op;
+
+        while (cin.fail()) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Invalid Number, Enter a valid one:" << " ";
+            cin >> op;
+        }
+
     } while (!isNumberInRange(op, 1, 5));
     return (enOperation)op;
 }
